@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Google Translate Script -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -23,7 +27,6 @@
                     <input type="text" id="searchInput" placeholder="Click to search titles...">
                     <button onclick="searchTitles()"><i class="fas fa-search"></i></button>
                 </div>
-                <!-- Replace custom language selector with Google Translate widget -->
                 <div id="google_translate_element" class="language-selector"></div>
             </div>
         </div>
@@ -38,12 +41,11 @@
         </div>
         <div class="bio-content">
             <h2>Samrat Singh Rajput: A Multi-Talented Social Media Influencer and YouTuber</h2>
-            <!-- Professional Description (Top) -->
             <div class="professional-description">
                 <p>Samrat Singh Rajput is an Indian social media influencer and YouTuber known for his captivating love story videos, cover songs, and short films. He was born on 15th October 2003 into a middle-class family in Bhathwa Prashuram, Kuchaikote, Gopalganj, Bihar, but he was raised in Lucknow, Uttar Pradesh, where he has been living since childhood and pursuing his education.</p>
                 <p>Through Samrat Rajput Creation, he delivers emotionally driven love stories that deeply connect with his audience. His unique storytelling style and versatile talent have established him as a rising star in the digital world, setting him apart in the field of content creation.</p>
             </div>
-            <!-- Card 1: Personal Information -->
+            <!-- Bio Cards (unchanged from your input) -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/samrattop.jpg" alt="Samrat Singh Rajput">
@@ -60,7 +62,6 @@
                     <p><strong>Zodiac Sign:</strong> Kumbh (Aquarius)</p>
                 </div>
             </div>
-            <!-- Card 2: Family and Background -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Family and Background</h3>
@@ -78,7 +79,6 @@
                     <img src="image/family.jpg" alt="Family Image">
                 </div>
             </div>
-            <!-- Card 3: Family Background of Samrat Singh Rajput -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/familyback.jpg" alt="Family Background Image">
@@ -92,7 +92,6 @@
                     <p>Samrat's family has played a significant role in shaping his personality and career, standing by him through thick and thin. Their unwavering support has fueled his passion and dedication, helping him achieve success in multiple fields.</p>
                 </div>
             </div>
-            <!-- Card 4: Physical Appearance -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Physical Appearance</h3>
@@ -105,7 +104,6 @@
                     <img src="image/samratphysical.jpg" alt="Physical Appearance">
                 </div>
             </div>
-            <!-- Card 5: Personal Interests and Preferences -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/srgitar.jpg" alt="Interests Image">
@@ -122,7 +120,6 @@
                     <p>🌱 <strong>Diet Preference:</strong> Vegetarian</p>
                 </div>
             </div>
-            <!-- Card 6: Educational Background -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Educational Background</h3>
@@ -134,7 +131,6 @@
                     <img src="image/sredu.jpg" alt="Education Image">
                 </div>
             </div>
-            <!-- Card 7: Professional Journey -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/samratprofessional.jpg" alt="Professional Image">
@@ -146,7 +142,6 @@
                     <p>Samrat’s professional journey is a testament to his versatility, dedication, and commitment to delivering impactful content that captivates his audience.</p>
                 </div>
             </div>
-            <!-- Card 8: YouTube Journey and Content Creation -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>YouTube Journey and Content Creation</h3>
@@ -161,7 +156,6 @@
                     <img src="image/srcyoutubelogo.png" alt="YouTube Image">
                 </div>
             </div>
-            <!-- Card 9: Creative Expertise and Skills -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/akrssrar.jpg" alt="Skills Image">
@@ -176,7 +170,6 @@
                     <p>🎞 <strong>Video & Photo Editing</strong> – Ensuring high-quality post-production with a keen eye for detail.</p>
                 </div>
             </div>
-            <!-- Card 10: Entrepreneurial Journey -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Entrepreneurial Journey – Samrat Royal Collection</h3>
@@ -195,7 +188,6 @@
                     <img src="image/src.png" alt="Business Image">
                 </div>
             </div>
-            <!-- Card 11: Net Worth and Financial Success -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/network.png" alt="Net Worth Image">
@@ -209,7 +201,6 @@
                     <p>🏢 Samrat Royal Collection (Business)</p>
                 </div>
             </div>
-            <!-- Card 12: Team -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Samrat Rajput Creation – Team and Support</h3>
@@ -225,7 +216,6 @@
                     <img src="image/srcteam.jpg" alt="Team Image">
                 </div>
             </div>
-            <!-- Card 13: Awards and Recognition -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/awads.png" alt="Awards Image">
@@ -236,7 +226,6 @@
                     <p>Samrat Singh Rajput’s dedication and talent have earned him recognition in the digital world, inspiring aspiring creators and storytellers.</p>
                 </div>
             </div>
-            <!-- Card 14: Vision and Future Aspirations -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>Vision and Future Aspirations</h3>
@@ -250,7 +239,6 @@
                     <img src="image/srcffrsinger.jpg" alt="Vision Image">
                 </div>
             </div>
-            <!-- Card 15: Multi-Talented Visionary -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/samneh.jpg" alt="Visionary Image">
@@ -268,20 +256,21 @@
                     <p>💼 <strong>Businessman:</strong> Expanding his ventures and building a lasting legacy.</p>
                 </div>
             </div>
-            <!-- Card 16: The Special Person Behind His Success -->
             <div class="bio-card bio-card-right">
                 <div class="card-details">
                     <h3>The Special Person Behind His Success</h3>
                     <p>Samrat Singh Rajput’s remarkable journey is strongly supported by Neha Singh Rajput, who plays a crucial role not only as his strength and inspiration but also as his partner and collaborator.</p>
                     <p>💃 <strong>Profession: Actress and Artist</strong></p>
                     <p>Neha Singh Rajput is a talented actress and artist who plays an essential role in the Samrat Rajput Creation team. She works alongside Samrat, contributing her skills and dedication to enhance their creative journey, making every project a reflection of their combined efforts.</p>
-                    <p>Samrat Singh Rajput’s unwavering dedication and passion drive him to achieve greatness in every field. His vision is clear – to inspire, create, give back, and leave a legacy that echoes through generations.</p>
+                    <p>💖 <strong>A Constant Source of Motivation.</strong></p>
+                    <p>Neha Singh Rajput is not just a collaborator but also a constant source of motivation in Samrat’s life. Even when Samrat feels disheartened or thinks of giving up, Neha stands by him as his hope and support. Her unwavering belief in his potential pushes him to move forward and strive for success, ensuring that he never loses sight of his dreams.</p>
+                    <p>❤ <strong>Unbreakable Bond of Love and Support</strong></p>
+                    <p>Neha’s love and support remain with Samrat at every step of his journey. Her presence brings strength and positivity, giving Samrat the confidence to face any challenge that comes his way. Their bond is a perfect blend of love, trust, and dedication, making them an unstoppable team.</p>
                 </div>
                 <div class="card-image">
                     <img src="image/samnehlr.jpg" alt="Neha Singh Rajput Image">
                 </div>
             </div>
-            <!-- Card 17: Professional Highlights -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/subcast.jpg" alt="Professional Highlights Image">
@@ -307,7 +296,7 @@
                     <p>✅ Her sacrifices and dedication inspire Samrat to work harder.</p>
                 </div>
                 <div class="card-image">
-                    <img src="image/motherlove.jpg" alt="Neha Singh Rajput Image">
+                    <img src="image/motherlove.jpg" alt="Mother Love Image">
                 </div>
             </div>
         </div>
@@ -342,7 +331,7 @@
         </div>
     </section>
 
-    <!-- Video Section (YouTube Embed) -->
+    <!-- Video Sections -->
     <section class="video-section">
         <h2>Featured Video</h2>
         <div class="video-container">
@@ -352,8 +341,6 @@
                     allowfullscreen></iframe>
         </div>
     </section>
-
-    <!-- Video Section (YouTube Embed) -->
     <section class="video-section">
         <h2>2 Featured Video</h2>
         <div class="video-container">
@@ -363,8 +350,6 @@
                     allowfullscreen></iframe>
         </div>
     </section>
-
-    <!-- Video Section (YouTube Embed) -->
     <section class="video-section">
         <h2>3 Featured Video</h2>
         <div class="video-container">
@@ -373,6 +358,27 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen></iframe>
         </div>
+    </section>
+
+    <!-- Review Section -->
+    <!-- Review Section -->
+    <section class="review-section">
+        <h2>What People Say</h2>
+        <button id="sign-in-btn" onclick="signInWithGoogle()">Sign in with Google</button>
+        <p id="user-info" style="display: none;"></p>
+        <div class="review-form">
+            <h3>Leave Your Review</h3>
+            <textarea id="review-text" placeholder="Write your review here..."></textarea>
+            <button onclick="submitReview()">Submit Review</button>
+        </div>
+        <div class="review-grid" id="review-grid"></div>
+        <div class="pagination">
+            <button onclick="prevPage()" id="prev-btn">Previous</button>
+            <span id="page-info"></span>
+            <button onclick="nextPage()" id="next-btn">Next</button>
+        </div>
+        <h7>If you enjoyed reading my biography, learned something valuable, or liked my love story videos, Please give a 5 Star ⭐ rating.
+            Love you all #samnehufans #samlovers 🥰</h7>
     </section>
 
     <!-- Social Media Links -->
@@ -384,7 +390,7 @@
         <a href="https://x.com/samrat_rajput_?t=PUPD5MUeN_HfuF4j4zFBfw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
     </section>
 
-    <!-- Social Media Links -->
+    <!-- Additional Social Media Links -->
     <section class="my-social-links">
         <h3>Follow Us On</h3>
         <a href="https://youtube.com/@samrat_kushwaha_rajput?si=z5JzAzNNtpq5P8KB" target="_blank">
@@ -393,14 +399,12 @@
         <a href="https://youtube.com/@samrat_singh_rajput?si=jY8rUWSRlHTATUOV" target="_blank">
             <i class="fab fa-youtube"></i> YouTube
         </a>
-        
         <a href="https://www.instagram.com/samrat_kushwaha_rajput?igsh=M2xsaWxwYTNnaDF1" target="_blank">
             <i class="fab fa-instagram"></i> Instagram
         </a>
         <a href="https://www.instagram.com/mr._samrat_rajput?igsh=N2Nsd3M1cmZ1ZHhs" target="_blank">
             <i class="fab fa-instagram"></i> Instagram
         </a>
-        
         <a href="https://www.facebook.com/share/12Kf3xhZsw9/" target="_blank">
             <i class="fab fa-facebook"></i> Facebook
         </a>
@@ -411,40 +415,311 @@
         <p>© 2025 AKR International Developer Industry. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Search and Google Translate -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <!-- JavaScript -->
     <script>
-        function searchTitles() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.bio-card');
-            
-            cards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                if (title.includes(input)) {
-                    card.style.display = 'flex';
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJKRb_KSndFGT43hy6ryuNnfT9QdF9uYU",
+            authDomain: "samrat-singh-rajput-biog-e49c1.firebaseapp.com",
+            databaseURL: "https://samrat-singh-rajput-biog-e49c1-default-rtdb.firebaseio.com",
+            projectId: "samrat-singh-rajput-biog-e49c1",
+            storageBucket: "samrat-singh-rajput-biog-e49c1.firebasestorage.app",
+            messagingSenderId: "501893496083",
+            appId: "1:501893496083:web:294960e621c18426836ee6",
+            measurementId: "G-CCEYPBG93G"
+        };
 
-            // If input is empty, show all cards
-            if (!input) {
-                cards.forEach(card => {
-                    card.style.display = 'flex';
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const database = firebase.database();
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        // YouTube API Configuration
+        const CLIENT_ID = 'YOUR_OAUTH_CLIENT_ID'; // Replace with your OAuth 2.0 Client ID
+        const CHANNEL_ID = 'YOUR_CHANNEL_ID'; // Replace with your YouTube Channel ID (e.g., UCxxxxxxxxxxxxxxxxxxxxxx)
+
+        // Load the Google API Client
+        gapi.load('client:auth2', initClient);
+
+        function initClient() {
+            gapi.client.init({
+                clientId: CLIENT_ID,
+                scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
+            }).then(() => {
+                console.log('Google API Client initialized');
+            }).catch((error) => {
+                console.error('Error initializing Google API Client:', error);
+            });
+        }
+
+        // Subscribe to Channel
+        function subscribeToChannel() {
+            const authInstance = gapi.auth2.getAuthInstance();
+            if (!authInstance) {
+                alert('Google API Client not initialized. Please try again.');
+                return;
+            }
+
+            if (!authInstance.isSignedIn.get()) {
+                authInstance.signIn().then(() => {
+                    performSubscription();
+                }).catch((error) => {
+                    alert('Error signing in with Google: ' + error.error);
                 });
+            } else {
+                performSubscription();
             }
         }
 
-        // Initialize Google Translate widget
+        function performSubscription() {
+            gapi.client.youtube.subscriptions.insert({
+                part: 'snippet',
+                resource: {
+                    snippet: {
+                        resourceId: {
+                            kind: 'youtube#channel',
+                            channelId: CHANNEL_ID
+                        }
+                    }
+                }
+            }).then((response) => {
+                alert('Successfully subscribed to the channel!');
+                document.getElementById('subscribe-btn').textContent = 'Subscribed';
+                document.getElementById('subscribe-btn').disabled = true;
+            }).catch((error) => {
+                if (error.status === 409) {
+                    alert('You are already subscribed to this channel!');
+                    document.getElementById('subscribe-btn').textContent = 'Subscribed';
+                    document.getElementById('subscribe-btn').disabled = true;
+                } else {
+                    alert('Error subscribing to the channel: ' + error.result.error.message);
+                }
+            });
+        }
+
+        // Follow Profile
+        function followProfile() {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in to follow!');
+                signInWithGoogle();
+                return;
+            }
+
+            const email = user.email;
+            const timestamp = new Date().toISOString();
+
+            // Check if the user has already followed
+            const followersRef = database.ref('followers/' + user.uid);
+            followersRef.once('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    alert('You are already following!');
+                    document.getElementById('follow-btn').textContent = 'Following';
+                    document.getElementById('follow-btn').disabled = true;
+                } else {
+                    // Add follower to Firebase
+                    followersRef.set({
+                        email: email,
+                        timestamp: timestamp
+                    }).then(() => {
+                        alert('Thank you for following!');
+                        document.getElementById('follow-btn').textContent = 'Following';
+                        document.getElementById('follow-btn').disabled = true;
+                    }).catch((error) => {
+                        alert('Error following: ' + error.message);
+                    });
+                }
+            });
+        }
+
+        // Go to Instagram
+        function goToInstagram() {
+            window.open('https://www.instagram.com/samratrajputcreation?igsh=Zm56Y2swOWJ3MHRi', '_blank');
+        }
+
+        // Sign in with Google for Firebase (Reviews and Follow)
+        function signInWithGoogle() {
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    const user = result.user;
+                    document.getElementById('user-info').textContent = `Signed in as: ${user.displayName} (${user.email})`;
+                    document.getElementById('user-info').style.display = 'block';
+                    document.getElementById('sign-in-btn').style.display = 'none';
+                    saveUserInfo(user);
+                })
+                .catch((error) => {
+                    alert('Error signing in: ' + error.message);
+                });
+        }
+
+        // Save User Info
+        function saveUserInfo(user) {
+            const userRef = database.ref('users/' + user.uid);
+            userRef.set({
+                username: user.displayName,
+                profileimage: user.photoURL || 'https://via.placeholder.com/50',
+                uid: user.uid
+            });
+        }
+
+        // Check auth state
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('user-info').textContent = `Signed in as: ${user.displayName} (${user.email})`;
+                document.getElementById('user-info').style.display = 'block';
+                document.getElementById('sign-in-btn').style.display = 'none';
+
+                // Check if the user has already followed
+                const followersRef = database.ref('followers/' + user.uid);
+                followersRef.once('value', (snapshot) => {
+                    if (snapshot.exists()) {
+                        document.getElementById('follow-btn').textContent = 'Following';
+                        document.getElementById('follow-btn').disabled = true;
+                    }
+                });
+            } else {
+                document.getElementById('user-info').style.display = 'none';
+                document.getElementById('sign-in-btn').style.display = 'block';
+                document.getElementById('follow-btn').textContent = 'Follow';
+                document.getElementById('follow-btn').disabled = false;
+            }
+        });
+
+        // Search Titles
+        function searchTitles() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.bio-card');
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                card.style.display = title.includes(input) ? 'flex' : 'none';
+                if (title.includes(input)) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+            if (!input) cards.forEach(card => card.style.display = 'flex');
+        }
+
+        // Google Translate
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'en', // Default language is English
-                includedLanguages: 'en,hi,es', // Restrict to English, Hindi, Spanish (add more as needed)
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,es',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
+
+        // Review System
+        const reviewsPerPage = 5;
+        let currentPage = 1;
+        let reviews = [];
+
+        // Submit Review
+        function submitReview() {
+            const reviewText = document.getElementById('review-text').value.trim();
+
+            // Validate review text
+            if (reviewText === '') {
+                alert('Please write a review!');
+                return;
+            }
+
+            // Validate user authentication
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in to submit a review!');
+                return;
+            }
+
+            // Prepare review data
+            const reviewData = {
+                uid: user.uid,
+                username: user.displayName,
+                profileimage: user.photoURL || 'https://via.placeholder.com/50',
+                review: reviewText
+            };
+
+            // Submit review to Firebase
+            const newReviewRef = database.ref('reviews').push();
+            newReviewRef.set(reviewData)
+                .then(() => {
+                    document.getElementById('review-text').value = '';
+                    alert('Thank you for your review!');
+                })
+                .catch((error) => {
+                    alert('Error submitting review: ' + error.message);
+                });
+        }
+
+        // Load Reviews
+        function loadReviews() {
+            const reviewsRef = database.ref('reviews');
+            reviewsRef.on('value', (snapshot) => {
+                reviews = [];
+                snapshot.forEach((childSnapshot) => {
+                    const review = childSnapshot.val();
+                    reviews.push({
+                        reviewid: childSnapshot.key,
+                        uid: review.uid,
+                        username: review.username,
+                        profileimage: review.profileimage,
+                        review: review.review
+                    });
+                });
+                reviews.sort((a, b) => b.reviewid.localeCompare(a.reviewid));
+                displayReviews();
+            });
+        }
+
+        // Display Reviews
+        function displayReviews() {
+            const reviewGrid = document.getElementById('review-grid');
+            reviewGrid.innerHTML = '';
+            const start = (currentPage - 1) * reviewsPerPage;
+            const end = start + reviewsPerPage;
+            const paginatedReviews = reviews.slice(start, end);
+
+            paginatedReviews.forEach(review => {
+                const div = document.createElement('div');
+                div.className = 'review-card';
+                div.innerHTML = `
+                    <div class="reviewer-info">
+                        <img src="${review.profileimage}" alt="${review.username}" class="reviewer-avatar">
+                        <span class="reviewer-name">${review.username}</span>
+                    </div>
+                    <p>${review.review}</p>
+                `;
+                reviewGrid.appendChild(div);
+            });
+
+            updatePagination();
+        }
+
+        // Update Pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+            document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage === totalPages || totalPages === 0;
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayReviews();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < Math.ceil(reviews.length / reviewsPerPage)) {
+                currentPage++;
+                displayReviews();
+            }
+        }
+
+        // Initial Load
+        window.onload = () => {
+            loadReviews();
+        };
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'924d670d2d14673e',t:'MTc0MjcyNzM5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
