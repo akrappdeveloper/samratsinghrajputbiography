@@ -10,9 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Google Translate Script -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK (Use only one version) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
 </head>
 <body>
@@ -45,7 +44,7 @@
                 <p>Samrat Singh Rajput is an Indian social media influencer and YouTuber known for his captivating love story videos, cover songs, and short films. He was born on 15th October 2003 into a middle-class family in Bhathwa Prashuram, Kuchaikote, Gopalganj, Bihar, but he was raised in Lucknow, Uttar Pradesh, where he has been living since childhood and pursuing his education.</p>
                 <p>Through Samrat Rajput Creation, he delivers emotionally driven love stories that deeply connect with his audience. His unique storytelling style and versatile talent have established him as a rising star in the digital world, setting him apart in the field of content creation.</p>
             </div>
-            <!-- Bio Cards (unchanged from your input) -->
+            <!-- Bio Cards (unchanged) -->
             <div class="bio-card bio-card-left">
                 <div class="card-image">
                     <img src="image/samrattop.jpg" alt="Samrat Singh Rajput">
@@ -265,7 +264,7 @@
                     <p>💖 <strong>A Constant Source of Motivation.</strong></p>
                     <p>Neha Singh Rajput is not just a collaborator but also a constant source of motivation in Samrat’s life. Even when Samrat feels disheartened or thinks of giving up, Neha stands by him as his hope and support. Her unwavering belief in his potential pushes him to move forward and strive for success, ensuring that he never loses sight of his dreams.</p>
                     <p>❤ <strong>Unbreakable Bond of Love and Support</strong></p>
-                    <p>Neha’s love and support remain with Samrat at every step of his journey. Her presence brings strength and positivity, giving Samrat the confidence to face any challenge that comes his way. Their bond is a perfect blend of love, trust, and dedication, making them an unstoppable team.</p>
+                    <p>Neha’s love and support remain with Samrat at every step of his journey. Her presence brings strength and positivity, giving Samrat the confidence to face any challenge that comes his way. Their bond is a perfect blend of love, trust, and dedication, making them an unstoppable team.</p>
                 </div>
                 <div class="card-image">
                     <img src="image/samnehlr.jpg" alt="Neha Singh Rajput Image">
@@ -297,6 +296,19 @@
                 </div>
                 <div class="card-image">
                     <img src="image/motherlove.jpg" alt="Mother Love Image">
+                </div>
+            </div>
+            <div class="bio-card bio-card-left">
+                <div class="card-image">
+                    <img src="image/samratrajput.jpg" alt="New Projects Image">
+                </div>
+                <div class="card-details">
+                    <h3>Samrat’s Preparation for New Projects</h3>
+                    <p>Samrat Singh Rajput is diligently working on his upcoming new love story videos and album songs. He is committed to taking his art to new heights and aims to present something unique and emotionally captivating every time.</p>
+                    <h4>🎥 Preparing for Bigger Plans</h4>
+                    <p>Samrat is not limited to love story videos alone; he is also preparing for something bigger. Very soon, work on his new and ambitious projects will begin, offering audiences something fresh and memorable. His goal is to carve a distinct identity in the entertainment industry and win the hearts of viewers with his work.</p>
+                    <h4>💡 Striving for New Heights</h4>
+                    <p>Samrat’s dedication and passion constantly push him to move forward. He is not only improving the quality of his content but also incorporating new ideas and concepts to ensure that his audience experiences something fresh every time. With his unwavering determination, it’s clear that he is all set to amaze his audience with his upcoming projects.</p>
                 </div>
             </div>
         </div>
@@ -360,27 +372,6 @@
         </div>
     </section>
 
-    <!-- Review Section -->
-    <!-- Review Section -->
-    <section class="review-section">
-        <h2>What People Say</h2>
-        <button id="sign-in-btn" onclick="signInWithGoogle()">Sign in with Google</button>
-        <p id="user-info" style="display: none;"></p>
-        <div class="review-form">
-            <h3>Leave Your Review</h3>
-            <textarea id="review-text" placeholder="Write your review here..."></textarea>
-            <button onclick="submitReview()">Submit Review</button>
-        </div>
-        <div class="review-grid" id="review-grid"></div>
-        <div class="pagination">
-            <button onclick="prevPage()" id="prev-btn">Previous</button>
-            <span id="page-info"></span>
-            <button onclick="nextPage()" id="next-btn">Next</button>
-        </div>
-        <h7>If you enjoyed reading my biography, learned something valuable, or liked my love story videos, Please give a 5 Star ⭐ rating.
-            Love you all #samnehufans #samlovers 🥰</h7>
-    </section>
-
     <!-- Social Media Links -->
     <section class="social-links">
         <h3>Connect With Me</h3>
@@ -430,162 +421,16 @@
         };
 
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const database = firebase.database();
-        const provider = new firebase.auth.GoogleAuthProvider();
-
-        // YouTube API Configuration
-        const CLIENT_ID = 'YOUR_OAUTH_CLIENT_ID'; // Replace with your OAuth 2.0 Client ID
-        const CHANNEL_ID = 'YOUR_CHANNEL_ID'; // Replace with your YouTube Channel ID (e.g., UCxxxxxxxxxxxxxxxxxxxxxx)
-
-        // Load the Google API Client
-        gapi.load('client:auth2', initClient);
-
-        function initClient() {
-            gapi.client.init({
-                clientId: CLIENT_ID,
-                scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
-                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
-            }).then(() => {
-                console.log('Google API Client initialized');
-            }).catch((error) => {
-                console.error('Error initializing Google API Client:', error);
-            });
+        let database;
+        try {
+            firebase.initializeApp(firebaseConfig);
+            database = firebase.database();
+            console.log('Firebase initialized successfully');
+        } catch (error) {
+            console.error('Firebase initialization failed:', error.message);
+            alert('Failed to connect to the database: ' + error.message);
+            return; // Exit if initialization fails
         }
-
-        // Subscribe to Channel
-        function subscribeToChannel() {
-            const authInstance = gapi.auth2.getAuthInstance();
-            if (!authInstance) {
-                alert('Google API Client not initialized. Please try again.');
-                return;
-            }
-
-            if (!authInstance.isSignedIn.get()) {
-                authInstance.signIn().then(() => {
-                    performSubscription();
-                }).catch((error) => {
-                    alert('Error signing in with Google: ' + error.error);
-                });
-            } else {
-                performSubscription();
-            }
-        }
-
-        function performSubscription() {
-            gapi.client.youtube.subscriptions.insert({
-                part: 'snippet',
-                resource: {
-                    snippet: {
-                        resourceId: {
-                            kind: 'youtube#channel',
-                            channelId: CHANNEL_ID
-                        }
-                    }
-                }
-            }).then((response) => {
-                alert('Successfully subscribed to the channel!');
-                document.getElementById('subscribe-btn').textContent = 'Subscribed';
-                document.getElementById('subscribe-btn').disabled = true;
-            }).catch((error) => {
-                if (error.status === 409) {
-                    alert('You are already subscribed to this channel!');
-                    document.getElementById('subscribe-btn').textContent = 'Subscribed';
-                    document.getElementById('subscribe-btn').disabled = true;
-                } else {
-                    alert('Error subscribing to the channel: ' + error.result.error.message);
-                }
-            });
-        }
-
-        // Follow Profile
-        function followProfile() {
-            const user = auth.currentUser;
-            if (!user) {
-                alert('Please sign in to follow!');
-                signInWithGoogle();
-                return;
-            }
-
-            const email = user.email;
-            const timestamp = new Date().toISOString();
-
-            // Check if the user has already followed
-            const followersRef = database.ref('followers/' + user.uid);
-            followersRef.once('value', (snapshot) => {
-                if (snapshot.exists()) {
-                    alert('You are already following!');
-                    document.getElementById('follow-btn').textContent = 'Following';
-                    document.getElementById('follow-btn').disabled = true;
-                } else {
-                    // Add follower to Firebase
-                    followersRef.set({
-                        email: email,
-                        timestamp: timestamp
-                    }).then(() => {
-                        alert('Thank you for following!');
-                        document.getElementById('follow-btn').textContent = 'Following';
-                        document.getElementById('follow-btn').disabled = true;
-                    }).catch((error) => {
-                        alert('Error following: ' + error.message);
-                    });
-                }
-            });
-        }
-
-        // Go to Instagram
-        function goToInstagram() {
-            window.open('https://www.instagram.com/samratrajputcreation?igsh=Zm56Y2swOWJ3MHRi', '_blank');
-        }
-
-        // Sign in with Google for Firebase (Reviews and Follow)
-        function signInWithGoogle() {
-            auth.signInWithPopup(provider)
-                .then((result) => {
-                    const user = result.user;
-                    document.getElementById('user-info').textContent = `Signed in as: ${user.displayName} (${user.email})`;
-                    document.getElementById('user-info').style.display = 'block';
-                    document.getElementById('sign-in-btn').style.display = 'none';
-                    saveUserInfo(user);
-                })
-                .catch((error) => {
-                    alert('Error signing in: ' + error.message);
-                });
-        }
-
-        // Save User Info
-        function saveUserInfo(user) {
-            const userRef = database.ref('users/' + user.uid);
-            userRef.set({
-                username: user.displayName,
-                profileimage: user.photoURL || 'https://via.placeholder.com/50',
-                uid: user.uid
-            });
-        }
-
-        // Check auth state
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                document.getElementById('user-info').textContent = `Signed in as: ${user.displayName} (${user.email})`;
-                document.getElementById('user-info').style.display = 'block';
-                document.getElementById('sign-in-btn').style.display = 'none';
-
-                // Check if the user has already followed
-                const followersRef = database.ref('followers/' + user.uid);
-                followersRef.once('value', (snapshot) => {
-                    if (snapshot.exists()) {
-                        document.getElementById('follow-btn').textContent = 'Following';
-                        document.getElementById('follow-btn').disabled = true;
-                    }
-                });
-            } else {
-                document.getElementById('user-info').style.display = 'none';
-                document.getElementById('sign-in-btn').style.display = 'block';
-                document.getElementById('follow-btn').textContent = 'Follow';
-                document.getElementById('follow-btn').disabled = false;
-            }
-        });
 
         // Search Titles
         function searchTitles() {
@@ -607,119 +452,6 @@
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
-
-        // Review System
-        const reviewsPerPage = 5;
-        let currentPage = 1;
-        let reviews = [];
-
-        // Submit Review
-        function submitReview() {
-            const reviewText = document.getElementById('review-text').value.trim();
-
-            // Validate review text
-            if (reviewText === '') {
-                alert('Please write a review!');
-                return;
-            }
-
-            // Validate user authentication
-            const user = auth.currentUser;
-            if (!user) {
-                alert('Please sign in to submit a review!');
-                return;
-            }
-
-            // Prepare review data
-            const reviewData = {
-                uid: user.uid,
-                username: user.displayName,
-                profileimage: user.photoURL || 'https://via.placeholder.com/50',
-                review: reviewText
-            };
-
-            // Submit review to Firebase
-            const newReviewRef = database.ref('reviews').push();
-            newReviewRef.set(reviewData)
-                .then(() => {
-                    document.getElementById('review-text').value = '';
-                    alert('Thank you for your review!');
-                })
-                .catch((error) => {
-                    alert('Error submitting review: ' + error.message);
-                });
-        }
-
-        // Load Reviews
-        function loadReviews() {
-            const reviewsRef = database.ref('reviews');
-            reviewsRef.on('value', (snapshot) => {
-                reviews = [];
-                snapshot.forEach((childSnapshot) => {
-                    const review = childSnapshot.val();
-                    reviews.push({
-                        reviewid: childSnapshot.key,
-                        uid: review.uid,
-                        username: review.username,
-                        profileimage: review.profileimage,
-                        review: review.review
-                    });
-                });
-                reviews.sort((a, b) => b.reviewid.localeCompare(a.reviewid));
-                displayReviews();
-            });
-        }
-
-        // Display Reviews
-        function displayReviews() {
-            const reviewGrid = document.getElementById('review-grid');
-            reviewGrid.innerHTML = '';
-            const start = (currentPage - 1) * reviewsPerPage;
-            const end = start + reviewsPerPage;
-            const paginatedReviews = reviews.slice(start, end);
-
-            paginatedReviews.forEach(review => {
-                const div = document.createElement('div');
-                div.className = 'review-card';
-                div.innerHTML = `
-                    <div class="reviewer-info">
-                        <img src="${review.profileimage}" alt="${review.username}" class="reviewer-avatar">
-                        <span class="reviewer-name">${review.username}</span>
-                    </div>
-                    <p>${review.review}</p>
-                `;
-                reviewGrid.appendChild(div);
-            });
-
-            updatePagination();
-        }
-
-        // Update Pagination
-        function updatePagination() {
-            const totalPages = Math.ceil(reviews.length / reviewsPerPage);
-            document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
-            document.getElementById('prev-btn').disabled = currentPage === 1;
-            document.getElementById('next-btn').disabled = currentPage === totalPages || totalPages === 0;
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayReviews();
-            }
-        }
-
-        function nextPage() {
-            if (currentPage < Math.ceil(reviews.length / reviewsPerPage)) {
-                currentPage++;
-                displayReviews();
-            }
-        }
-
-        // Initial Load
-        window.onload = () => {
-            loadReviews();
-        };
     </script>
 </body>
 </html>
