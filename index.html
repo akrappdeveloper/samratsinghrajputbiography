@@ -406,31 +406,8 @@
         <p>© 2025 AKR International Developer Industry. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCJKRb_KSndFGT43hy6ryuNnfT9QdF9uYU",
-            authDomain: "samrat-singh-rajput-biog-e49c1.firebaseapp.com",
-            databaseURL: "https://samrat-singh-rajput-biog-e49c1-default-rtdb.firebaseio.com",
-            projectId: "samrat-singh-rajput-biog-e49c1",
-            storageBucket: "samrat-singh-rajput-biog-e49c1.firebasestorage.app",
-            messagingSenderId: "501893496083",
-            appId: "1:501893496083:web:294960e621c18426836ee6",
-            measurementId: "G-CCEYPBG93G"
-        };
-
-        // Initialize Firebase
-        let database;
-        try {
-            firebase.initializeApp(firebaseConfig);
-            database = firebase.database();
-            console.log('Firebase initialized successfully');
-        } catch (error) {
-            console.error('Firebase initialization failed:', error.message);
-            alert('Failed to connect to the database: ' + error.message);
-            return; // Exit if initialization fails
-        }
+        // Search Bar
 
         // Search Titles
         function searchTitles() {
@@ -444,14 +421,24 @@
             if (!input) cards.forEach(card => card.style.display = 'flex');
         }
 
-        // Google Translate
+        // Google Translate Initialization
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,hi,es',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
+            if (typeof google !== 'undefined' && google.translate) {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'en,hi,es', // English, Hindi, Spanish
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                }, 'google_translate_element');
+            } else {
+                console.error('Google Translate script not loaded.');
+                document.getElementById('google_translate_element').innerHTML = 
+                    'Translation unavailable. Please try refreshing the page.';
+            }
         }
     </script>
+
+    <!-- Google Translate Script (Moved to Bottom) -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
